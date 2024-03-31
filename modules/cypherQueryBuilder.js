@@ -30,7 +30,7 @@ class CypherQueryBuilder {
 
     static createMatchQueryWithRelationOpportunity(o1) {
         if (!o1 || o1 == {}) {
-            throw new Error("Invalic input expected an object and a label")
+            throw new Error("Invalid input expected an object and a label")
         }
         return `match (o:Opportunity ${o1.opportunityName !== "" ? `where o.opportunityName = '${o1.opportunityName}'` : ''} ) -[n:NEEDS]-> (s:Skill) <-[hs:HAS_SKILL]- (e:Employee)
         match (e:Employee) -[ha:HAS_STATUS]-> (a:Availability) return e.firstName, e.lastName, e.age, a.availabilityName`

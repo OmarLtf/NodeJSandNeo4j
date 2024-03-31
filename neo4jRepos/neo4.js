@@ -1,11 +1,12 @@
-var neo4j = require("neo4j-driver")
-var driver = neo4j.driver(
-    process.env.NEO_URI,
-    neo4j.auth.basic(process.env.NEO_USER, process.env.NEO_PASSWORD)
-  )
+const neo4j = require("neo4j-driver");
 
+// Assuming default Neo4j Desktop settings
+const uri = "bolt://localhost:7687"; // Default URI for local Neo4j
+const user = "neo4j"; // Default username
+const password = "piterion"; // Default password
 
-const createSession = () => driver.session()
+const driver = neo4j.driver(uri, neo4j.auth.basic(user, password));
 
-module.exports = {driver, createSession}
+const createSession = () => driver.session();
 
+module.exports = { driver, createSession };
